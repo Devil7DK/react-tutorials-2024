@@ -1,0 +1,79 @@
+body {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container {
+  margin-bottom: 10px;
+}
+
+.input-container td:nth-child(1) {
+  text-align: right;
+  padding-right: 10px;
+}
+
+.input-container td:nth-child(2) > input,
+.input-container td:nth-child(2) > select {
+  width: 100%;
+}
+
+.input-container td:nth-child(2) > select {
+  box-sizing: border-box;
+}
+
+.input-container td.add {
+  text-align: right;
+}
+
+.table-container {
+  flex: 1;
+  overflow: auto;
+}
+
+#tblExpenses {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#tblExpenses th {
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  box-shadow: inset 0 2px 0 #000000, inset 0 -2px 0 #000000;
+  text-align: left;
+}
+
+#tblExpenses th,
+#tblExpenses td {
+  padding: 5px 10px;
+}
+
+#tblExpenses th.amount,
+#tblExpenses td.amount,
+#tblExpenses td.amount > input {
+  text-align: right;
+}
+
+#tblExpenses td > input,
+#tblExpenses td > select {
+  width: 100%;
+}
+
+.balance-container {
+  display: flex;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 2em;
+}
+
+#balance {
+  font-weight: 600;
+}
+
+#root {
+  display: contents;
+}

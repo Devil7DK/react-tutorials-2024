@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Addition</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js" referrerpolicy="no-referrer"></script>
+  </head>
+
+  <body>
+    <h1>Addition on Button Click</h1>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      function App() {
+        const [num1, setNum1] = React.useState(0);
+        const [num2, setNum2] = React.useState(0);
+
+        return (
+          <>
+            <input type="number" value={num1} onChange={(e) => setNum1(e.target.valueAsNumber)} />
+            <input type="number" value={num2} onChange={(e) => setNum2(e.target.valueAsNumber)} />
+            <fieldset>
+              <legend>Result</legend>
+              <p>{num1 + num2}</p>
+            </fieldset>
+          </>
+        );
+      }
+
+      ReactDOM.render(React.createElement(App), document.getElementById("root"));
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.8/babel.min.js" referrerpolicy="no-referrer"></script>
+  </body>
+</html>

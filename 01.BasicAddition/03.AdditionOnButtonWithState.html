@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Addition</title>
+
+    <script>
+      var state = {
+        num1: 0,
+        num2: 0,
+      };
+
+      function onInputChange(e) {
+        state[e.target.name] = Number(e.target.value);
+      }
+
+      function add() {
+        document.getElementById("result").innerHTML = state.num1 + state.num2;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Addition on Button Click</h1>
+    <input type="number" name="num1" placeholder="Enter a number" onchange="onInputChange(event)" />
+    <input type="number" name="num1" placeholder="Enter a number" onchange="onInputChange(event)" />
+    <button onclick="add()">Add</button>
+    <fieldset>
+      <legend>Result</legend>
+      <p id="result"></p>
+    </fieldset>
+  </body>
+</html>

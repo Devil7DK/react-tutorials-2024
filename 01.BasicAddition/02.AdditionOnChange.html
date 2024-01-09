@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Addition</title>
+
+    <script>
+      function add() {
+        var num1 = parseInt(document.getElementById("num1").value);
+        var num2 = parseInt(document.getElementById("num2").value);
+
+        if (isNaN(num1)) {
+          num1 = 0;
+        }
+
+        if (isNaN(num2)) {
+          num2 = 0;
+        }
+
+        document.getElementById("result").innerHTML = num1 + num2;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Simple Addition with JS</h1>
+    <input type="number" id="num1" placeholder="Enter a number" onchange="add()" />
+    <input type="number" id="num2" placeholder="Enter a number" onchange="add()" />
+    <fieldset>
+      <legend>Result</legend>
+      <p id="result"></p>
+    </fieldset>
+  </body>
+</html>

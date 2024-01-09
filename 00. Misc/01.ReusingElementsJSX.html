@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reusing Elements</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js" referrerpolicy="no-referrer"></script>
+  </head>
+
+  <body>
+    <h1>Reusing Elements</h1>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const el = <div>Hello</div>;
+
+      function App() {
+        return (
+          <>
+            <fieldset>
+              <legend>F1</legend>
+              {el}
+            </fieldset>
+            <fieldset>
+              <legend>F2</legend>
+              {el}
+            </fieldset>
+          </>
+        );
+      }
+
+      ReactDOM.render(React.createElement(App), document.getElementById("root"));
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.8/babel.min.js" referrerpolicy="no-referrer"></script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reusing Elements</title>
+  </head>
+  <body>
+    <h1>Reusing Elements</h1>
+    <fieldset id="f1">
+      <legend>F1</legend>
+    </fieldset>
+    <fieldset id="f2">
+      <legend>F2</legend>
+    </fieldset>
+
+    <script type="text/javascript">
+      const el = document.createElement("div");
+      el.innerHTML = "Hello";
+
+      const f1 = document.getElementById("f1");
+      const f2 = document.getElementById("f2");
+
+      f1.appendChild(el);
+      setTimeout(() => {
+        f2.appendChild(el);
+      }, 3000);
+    </script>
+  </body>
+</html>

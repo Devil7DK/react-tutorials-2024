@@ -16,7 +16,7 @@
 2. JSX and its advantages. Read more [here](https://legacy.reactjs.org/docs/introducing-jsx.html)
 3. Virtual DOM and its advantages. Read more [here](https://reactjs.org/docs/faq-internals.html) and [here](https://medium.com/devinder/react-virtual-dom-vs-real-dom-23749ff7adc9)
 4. Bootstraping React project
-5. React Components and Lifecycle
+5. React Components and Lifecycle. Read more about `key` prop [here](https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/)
 6. React Hooks
 7. Routing in React
 8. State Management in React - Context API, Redux and MobX

@@ -11,7 +11,7 @@ var app = builder.Build();
 
 app.MapGet("/api/todos", (DataContext dataContext) =>
 {
-    return Results.Ok(dataContext.ToDos);
+    return Results.Ok(dataContext.ToDos.OrderBy(x => x.UpdatedAt));
 });
 
 app.MapGet("/api/todo/{id}", async (DataContext dataContext, [FromRoute] Guid id) =>
@@ -45,6 +45,7 @@ app.MapPut("/api/todo/{id}", async (DataContext dataContext, [FromRoute] Guid id
 
     existingToDo.Description = toDo.Description;
     existingToDo.Status = toDo.Status;
+    existingToDo.UpdatedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds() * 1000;
 
     await dataContext.SaveChangesAsync();
 
@@ -115,4 +116,5 @@ public class ToDo
     public Guid Id { get; set; }
     public string Description { get; set; } = "";
     public ToDoStatus Status { get; set; } = ToDoStatus.Pending;
+    public long UpdatedAt { get; set; } = DateTimeOffset.UtcNow.ToUnixTimeSeconds() * 1000;
 }

@@ -12,9 +12,9 @@
 
 # Topics
 
-1. What and Why React
-2. JSX and its advantages
-3. Virtual DOM and its advantages
+1. What and Why React. Read more [here](https://legacy.reactjs.org/tutorial/tutorial.html#what-is-react)
+2. JSX and its advantages. Read more [here](https://legacy.reactjs.org/docs/introducing-jsx.html)
+3. Virtual DOM and its advantages. Read more [here](https://reactjs.org/docs/faq-internals.html) and [here](https://medium.com/devinder/react-virtual-dom-vs-real-dom-23749ff7adc9)
 4. Bootstraping React project
 5. React Components and Lifecycle
 6. React Hooks

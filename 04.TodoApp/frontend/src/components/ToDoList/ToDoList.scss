@@ -1,0 +1,13 @@
+div.todo-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+  flex: 1;
+  overflow: hidden;
+  padding: 1em;
+  margin: 1em;
+  background-color: #f5f5f5;
+  border-radius: 0.5em;
+  border: 0.1em solid #e0e0e0;
+  box-shadow: 0 0 0.2em 0.1em #e0e0e0;
+}

@@ -5,6 +5,10 @@ div.todo-column {
   border-radius: 0.5em;
   padding: 1em;
 
+  &.dropping {
+    box-shadow: 0 0 0.2em 0.1em #71aaff;
+  }
+
   > div.title-container {
     display: flex;
     justify-content: space-between;

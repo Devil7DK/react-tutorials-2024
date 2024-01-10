@@ -7,6 +7,10 @@ div.todo-card {
   gap: 0.5em;
   position: relative;
 
+  &.dragging {
+    opacity: 0.5;
+  }
+
   > div.top-bar {
     display: flex;
     justify-content: flex-end;

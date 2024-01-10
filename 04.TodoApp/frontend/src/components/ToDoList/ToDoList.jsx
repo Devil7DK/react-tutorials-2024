@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { ToDoColumn } from "../ToDoColumn/ToDoColumn";
 
-const Status = {
+const ToDoStatus = {
   Pending: 1,
   InProgress: 2,
   Done: 3,
@@ -13,68 +13,75 @@ const Status = {
 export const ToDoList = () => {
   const [todos, setTodos] = useState([]);
 
-  const pendingTodos = useMemo(() => todos.filter((todo) => todo.status === Status.Pending), [todos]);
-  const inProgressTodos = useMemo(() => todos.filter((todo) => todo.status === Status.InProgress), [todos]);
-  const doneTodos = useMemo(() => todos.filter((todo) => todo.status === Status.Done), [todos]);
+  const pendingTodos = useMemo(() => todos.filter((todo) => todo.status === ToDoStatus.Pending), [todos]);
+  const inProgressTodos = useMemo(() => todos.filter((todo) => todo.status === ToDoStatus.InProgress), [todos]);
+  const doneTodos = useMemo(() => todos.filter((todo) => todo.status === ToDoStatus.Done), [todos]);
 
-  const handleEdit = useCallback((id, updatedTodo) => {
-    const originalTodo = todos.find((todo) => todo.id === id);
+  const handleEdit = useCallback(
+    (id, updatedValues) => {
+      const originalTodo = todos.find((todo) => todo.id === id);
 
-    setTodos((todos) =>
-      todos.map((todo) => {
-        if (todo.id === id) {
-          return {
-            ...todo,
-            ...updatedTodo,
-          };
-        } else {
-          return todo;
-        }
+      const updatedTodo = {
+        ...originalTodo,
+        ...updatedValues,
+      };
+
+      console.log(id, updatedValues, updatedTodo);
+
+      setTodos((todos) =>
+        todos.map((todo) => {
+          if (todo.id === id) {
+            return updatedTodo;
+          } else {
+            return todo;
+          }
+        })
+      );
+
+      fetch(`/api/todo/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedTodo),
       })
-    );
+        .then((res) => {
+          if (res.ok) {
+            res.json().then((data) => {
+              setTodos((todos) =>
+                todos.map((todo) => {
+                  if (todo.id === id) {
+                    return {
+                      ...todo,
+                      ...data,
+                    };
+                  } else {
+                    return todo;
+                  }
+                })
+              );
+            });
+          } else {
+            throw new Error("Error editing todo");
+          }
+        })
+        .catch((err) => {
+          console.error("Error editing todo", err);
+          alert("Error editing todo");
 
-    fetch(`/api/todo/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedTodo),
-    })
-      .then((res) => {
-        if (res.ok) {
-          res.json().then((data) => {
-            setTodos((todos) =>
-              todos.map((todo) => {
-                if (todo.id === id) {
-                  return {
-                    ...todo,
-                    ...data,
-                  };
-                } else {
-                  return todo;
-                }
-              })
-            );
-          });
-        } else {
-          throw new Error("Error editing todo");
-        }
-      })
-      .catch((err) => {
-        console.error("Error editing todo", err);
-        alert("Error editing todo");
-
-        setTodos((todos) =>
-          todos.map((todo) => {
-            if (todo.id === id) {
-              return originalTodo;
-            } else {
-              return todo;
-            }
-          })
-        );
-      });
-  }, []);
+          setTodos((todos) =>
+            todos.map((todo) => {
+              if (todo.id === id) {
+                return originalTodo;
+              } else {
+                return todo;
+              }
+            })
+          );
+        });
+    },
+    [todos]
+  );
 
   const handleDelete = useCallback((id) => {
     fetch(`/api/todo/${id}`, {
@@ -104,9 +111,9 @@ export const ToDoList = () => {
 
   return (
     <div className="todo-list">
-      <ToDoColumn title="Pending" color="#ffd7d7" todos={pendingTodos} handleDelete={handleDelete} handleEdit={handleEdit} />
-      <ToDoColumn title="In Progress" color="#91c7ff" todos={inProgressTodos} handleDelete={handleDelete} handleEdit={handleEdit} />
-      <ToDoColumn title="Done" color="#7affce" todos={doneTodos} handleDelete={handleDelete} handleEdit={handleEdit} />
+      <ToDoColumn title="Pending" color="#ffd7d7" status={ToDoStatus.Pending} todos={pendingTodos} handleDelete={handleDelete} handleEdit={handleEdit} />
+      <ToDoColumn title="In Progress" color="#91c7ff" status={ToDoStatus.InProgress} todos={inProgressTodos} handleDelete={handleDelete} handleEdit={handleEdit} />
+      <ToDoColumn title="Done" color="#7affce" status={ToDoStatus.Done} todos={doneTodos} handleDelete={handleDelete} handleEdit={handleEdit} />
     </div>
   );
 };

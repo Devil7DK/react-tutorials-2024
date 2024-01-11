@@ -16,7 +16,9 @@
 2. JSX and its advantages. Read more [here](https://legacy.reactjs.org/docs/introducing-jsx.html)
 3. Virtual DOM and its advantages. Read more [here](https://reactjs.org/docs/faq-internals.html) and [here](https://medium.com/devinder/react-virtual-dom-vs-real-dom-23749ff7adc9)
 4. Bootstraping React project
-5. React Components and Lifecycle. Read more about `key` prop [here](https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/)
+5. React Components and Lifecycle.
+   1. Class Components
+   2. Functional Components
 6. React Hooks
 7. Routing in React
 8. State Management in React - Context API, Redux and MobX
@@ -49,6 +51,12 @@
 
 - [Recommended Courses](https://legacy.reactjs.org/community/courses.html) - Both free and paid options recommended by react community
 - [Official Certification from Facebook](https://www.facebook.com/business/learn/front-end-back-end-developer-certificate-coursera) - Not really recommended for beginners
+
+# Must Read Articles
+
+- [Fundamentals of functional programming in React](https://blog.logrocket.com/fundamentals-functional-programming-react/)
+- [Index as a Key is an Anti-Pattern](https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/)
+- [This is why we need to bind event handlers in class components](https://www.freecodecamp.org/news/this-is-why-we-need-to-bind-event-handlers-in-class-components-in-react-f7ea1a6f93eb/)
 
 # References
 

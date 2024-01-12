@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Updates in Components</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js" referrerpolicy="no-referrer"></script>
+
+    <style>
+      #root {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        inset: 0;
+        gap: 1rem;
+      }
+
+      .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .groups {
+        display: flex;
+        gap: 1rem;
+        flex: 1;
+        overflow: hidden;
+        width: 100%;
+      }
+
+      .groups > fieldset {
+        flex: 1;
+        overflow: hidden;
+      }
+
+      .items {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+        flex: 1;
+        overflow: hidden;
+      }
+
+      .item {
+        border: 1px solid #ccc;
+        padding: 1em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      /**
+       * Component1 - Component without Props and State
+       * Component2 - Component with Props
+       * Component3 - Component with State
+       * Component4 - Component with Props and State
+       * Component5 - Memoized Component without Props and State
+       * Component6 - Memoized Component with Props
+       * Component7 - Memoized Component with State
+       * Component8 - Memoized Component with Props and State
+       */
+
+      function Component1() {
+        console.log("Component1 rendering");
+
+        return (
+          <div className="item">
+            <h2>Component without Props and State</h2>
+            <p>Component1</p>
+          </div>
+        );
+      }
+
+      function Component2(props) {
+        console.log("Component2 rendering");
+
+        return (
+          <div className="item">
+            <h2>Component with Props</h2>
+            <p>Component2: {props.count}</p>
+          </div>
+        );
+      }
+
+      function Component3() {
+        console.log("Component3 rendering");
+
+        const [count, setCount] = React.useState(0);
+
+        return (
+          <div className="item">
+            <h2>Component with State</h2>
+            <p>Component3: {count}</p>
+            <button onClick={() => setCount(count + 1)}>Increment</button>
+          </div>
+        );
+      }
+
+      function Component4(props) {
+        console.log("Component4 rendering");
+
+        const [count, setCount] = React.useState(0);
+
+        return (
+          <div className="item">
+            <h2>Component with Props and State</h2>
+            <p>
+              Component4: {props.count} : {count}
+            </p>
+            <button onClick={() => setCount(count + 1)}>Increment</button>
+          </div>
+        );
+      }
+
+      const Component5 = React.memo(() => {
+        console.log("Component5 rendering");
+
+        return (
+          <div className="item">
+            <h2>Memonized Component without Props</h2>
+            <p>Component5</p>
+          </div>
+        );
+      });
+
+      const Component6 = React.memo((props) => {
+        console.log("Component6 rendering");
+
+        return (
+          <div className="item">
+            <h2>Memonized Component with Props</h2>
+            <p>Component6: {props.count}</p>
+          </div>
+        );
+      });
+
+      const Component7 = React.memo(() => {
+        console.log("Component7 rendering");
+
+        const [count, setCount] = React.useState(0);
+
+        return (
+          <div className="item">
+            <h2>Memonized Component with State</h2>
+            <p>Component7: {count}</p>
+            <button onClick={() => setCount(count + 1)}>Increment</button>
+          </div>
+        );
+      });
+
+      const Component8 = React.memo((props) => {
+        console.log("Component8 rendering");
+
+        const [count, setCount] = React.useState(0);
+
+        return (
+          <div className="item">
+            <h2>Memonized Component with Props and State</h2>
+            <p>
+              Component8: {props.count} : {count}
+            </p>
+            <button onClick={() => setCount(count + 1)}>Increment</button>
+          </div>
+        );
+      });
+
+      function App() {
+        console.log("App rendering");
+
+        const [count, setCount] = React.useState(0);
+
+        return (
+          <>
+            <div className="header">
+              <h1>Updates in Components</h1>
+              <p>App: {count}</p>
+              <button onClick={() => setCount(count + 1)}>Increment</button>
+            </div>
+            <div className="groups">
+              <fieldset>
+                <legend>Non-Memoized Components</legend>
+                <div className="items">
+                  <Component1 />
+                  <Component2 count={count} />
+                  <Component3 />
+                  <Component4 count={count} />
+                </div>
+              </fieldset>
+              <fieldset>
+                <legend>Memoized Components</legend>
+                <div className="items">
+                  <Component5 />
+                  <Component6 count={count} />
+                  <Component7 />
+                  <Component8 count={count} />
+                </div>
+              </fieldset>
+            </div>
+          </>
+        );
+      }
+
+      ReactDOM.render(React.createElement(App), document.getElementById("root"));
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.8/babel.min.js" referrerpolicy="no-referrer"></script>
+  </body>
+</html>

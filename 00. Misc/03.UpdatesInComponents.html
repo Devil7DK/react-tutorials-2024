@@ -173,13 +173,17 @@
         console.log("App rendering");
 
         const [count, setCount] = React.useState(0);
+        const [count2, setCount2] = React.useState(0);
 
         return (
           <>
             <div className="header">
               <h1>Updates in Components</h1>
-              <p>App: {count}</p>
+              <p>Passed to Other Components: {count}</p>
               <button onClick={() => setCount(count + 1)}>Increment</button>
+
+              <p>Not Passed to Other Components: {count2}</p>
+              <button onClick={() => setCount2(count2 + 1)}>Increment</button>
             </div>
             <div className="groups">
               <fieldset>

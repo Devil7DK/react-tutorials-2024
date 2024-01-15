@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
@@ -14,10 +15,15 @@ app.MapGet("/api/todos", (DataContext dataContext) =>
     return Results.Ok(dataContext.ToDos.OrderBy(x => x.UpdatedAt));
 });
 
+app.MapPost("/api/todos", (DataContext dataContext, [FromBody] PaginationPayload paginationPayload) =>
+{
+    return Results.Ok(dataContext.ToDos.Skip((paginationPayload.PageNumber - 1) * 10).Take(10).OrderBy(x => x.UpdatedAt));
+});
+
 app.MapGet("/api/todo/{id}", async (DataContext dataContext, [FromRoute] Guid id) =>
 {
     var toDo = await dataContext.ToDos.FindAsync(id);
-    
+
     if (toDo is null)
     {
         return Results.NotFound();
@@ -117,4 +123,10 @@ public class ToDo
     public string Description { get; set; } = "";
     public ToDoStatus Status { get; set; } = ToDoStatus.Pending;
     public long UpdatedAt { get; set; } = DateTimeOffset.UtcNow.ToUnixTimeSeconds() * 1000;
+}
+
+public class PaginationPayload
+{
+    [JsonPropertyName("pageNumber")]
+    public int PageNumber { get; set; }
 }

@@ -10,7 +10,6 @@ export const store = configureStore({
 });
 
 axios.interceptors.request.use((config) => {
-  debugger;
   const accessToken = store.getState().auth.accessToken;
 
   if (config.url.indexOf("login") === -1 && config.url.indexOf("register") === -1 && accessToken) {

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector, useStore } from "react-redux";
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
+import { authSlice } from "./store/auth";
 
 export const ProtectedRoute = () => {
   const dispatch = useDispatch();

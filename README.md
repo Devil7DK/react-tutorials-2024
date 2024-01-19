@@ -47,6 +47,20 @@
   <img src="https://raw.githubusercontent.com/Wavez/react-hooks-lifecycle/master/screenshot.jpg" />
 </a>
 
+## React Architecture Examples
+
+<a href="https://medium.com/geekculture/react-js-architecture-features-folder-structure-design-pattern-70b7b9103f22">
+  <img src="https://miro.medium.com/v2/resize:fit:4800/format:webp/0*wwuz-mU0KY4vsjLo" />
+</a>
+
+<a href="https://handsonreact.com/docs/architecture">
+  <img src="https://user-images.githubusercontent.com/1474579/65395139-5daf2580-dd5c-11e9-88bd-489848766507.png" />
+</a>
+
+<a href="https://www.knowledgehut.com/blog/web-development/react-js-architecture">
+  <img src="https://www.knowledgehut.com/_next/image?url=https%3A%2F%2Fd2o2utebsixu4k.cloudfront.net%2Fmedia%2Fimages%2F1662800153233-Image%20_1.png&w=1080&q=75" />
+</a>
+
 # Courses
 
 - [Recommended Courses](https://legacy.reactjs.org/community/courses.html) - Both free and paid options recommended by react community
@@ -57,6 +71,7 @@
 - [Fundamentals of functional programming in React](https://blog.logrocket.com/fundamentals-functional-programming-react/)
 - [Index as a Key is an Anti-Pattern](https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/)
 - [This is why we need to bind event handlers in class components](https://www.freecodecamp.org/news/this-is-why-we-need-to-bind-event-handlers-in-class-components-in-react-f7ea1a6f93eb/)
+- [Setting State On An Unmounted Component](https://reacttraining.com/blog/setting-state-on-unmounted-component)
 
 # References
 
